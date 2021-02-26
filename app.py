@@ -36,7 +36,7 @@ prediction_fare = response.json()
 prediction = round(prediction_fare['prediction'],2)
 
 
-st.header(f'Fare prediction: {precition} $)
+st.header(f'Fare prediction: {precition} $')
 
 map_data = pd.DataFrame({
 'lat' : [float(pickup_latitude),float(dropoff_latitude)],
