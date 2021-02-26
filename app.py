@@ -3,13 +3,14 @@ import requests
 import pandas as pd
 
 '''
-# TaxiFareModel front
+# Anso's TaxiFareModel
 '''
 
 st.markdown('''
 This is Anso's Website to predict the Taxi Fare of a ride within NY city - Have fun and enjoy
 ''')
 
+st.sidebar.header('''Parameter Input''')
 pickup_datetime = st.sidebar.text_input("Date and Time", "2013-07-06 17:18:00 UTC")
 pickup_longitude = st.sidebar.text_input("Pickup longitude", '-73.950655')
 pickup_latitude = st.sidebar.text_input("Pickup latitude", "40.783282")
@@ -20,7 +21,6 @@ passenger_count = st.sidebar.text_input("Passenger count", "1")
 url = 'http://taxifare.lewagon.ai/predict_fare/'
 
 #if url == 'http://taxifare.lewagon.ai/predict_fare/':
-
     #st.markdown('Maybe you want to use your own API for the prediction, not the one provided by Le Wagon...')
 
 params = dict(
@@ -35,5 +35,5 @@ response = requests.get(url, params=params)
 prediction_fare = response.json()
 
 
-st.markdown('''Prediction fare in $''')
+st.header('''Prediction fare in $''')
 st.markdown(round(prediction_fare['prediction'],2))
