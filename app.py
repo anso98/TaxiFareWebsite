@@ -33,7 +33,14 @@ params = dict(
     passenger_count=[int(passenger_count)])
 response = requests.get(url, params=params)
 prediction_fare = response.json()
+prediction = round(prediction_fare['prediction'],2)
 
 
-st.header('''Prediction fare in $''')
-st.markdown(round(prediction_fare['prediction'],2))
+st.header(f'Fare prediction: {precition} $)
+
+map_data = pd.DataFrame({
+'lat' : [float(pickup_latitude),float(dropoff_latitude)],
+'lon' : [float(pickup_longitude),float(dropoff_longitude)]
+})
+
+st.map(map_data)
